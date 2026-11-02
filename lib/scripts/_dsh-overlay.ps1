@@ -603,6 +603,15 @@ $haloWin.Add_Closed({ })
 $window.Add_Closed({
     if ($global:DshOvHaloWin.IsVisible) { $global:DshOvHaloWin.Close() }
     if ($global:DshOvHwnd -ne [IntPtr]::Zero) { [DshOv]::UnregisterHotKey($global:DshOvHwnd, 1) | Out-Null }
+    # A closed WPF window can never be shown again, and this script drives
+    # Dispatcher::Run() with no Application - so closing the last window does NOT end the
+    # message loop. The 16 ms timer kept the process alive and headless: every later
+    # Show() threw (logged once, then silence), the host saw exitCode === null and kept
+    # reusing it, and the ring was dead for the rest of the DSH session. Stopping the
+    # timer and shutting the dispatcher down makes the process exit, so the next action
+    # gets a fresh overlay.
+    try { if ($null -ne $timer) { $timer.Stop() } } catch { }
+    try { [System.Windows.Threading.Dispatcher]::CurrentDispatcher.InvokeShutdown() } catch { }
 })
 
 # No parent watch: a host that dies leaves no trace to watch, and a false positive
