@@ -1,6 +1,6 @@
 {
   "name": "@momasiku/dsh-pilot",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "DeepSeek Harness 的桌面自动化：给整台 Windows 机器装上眼睛和手。可以做人能做的任何事，包括且不仅限于CAD，WPS，浏览器操作，发微信。安全，快速，可靠，聪明，人性化。",
   "license": "MIT",
   "author": "momasiku",
@@ -40,9 +40,9 @@
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "^4.0.2",
-    "@deepseek-ai/dsh-attachment": ">=0.1.5-rc.2 <0.2.0 || >=0.2.0-rc.1 <0.3.0-0 || >=0.2.1-0 <0.3.0-0",
-    "@deepseek-ai/dsh-llm": ">=0.1.5-rc.2 <0.2.0 || >=0.2.0-rc.1 <0.3.0-0 || >=0.2.1-0 <0.3.0-0",
-    "@deepseek-ai/dsh-tools": ">=0.1.5-rc.2 <0.2.0 || >=0.2.0-rc.1 <0.3.0-0 || >=0.2.1-0 <0.3.0-0"
+    "@deepseek-ai/dsh-attachment": ">=0.1.5-rc.2 <0.2.0 || >=0.2.0-rc.1 <0.3.0-0 || >=0.2.1-0 <0.3.0-0 || >=0.2.2-0 <0.3.0-0",
+    "@deepseek-ai/dsh-llm": ">=0.1.5-rc.2 <0.2.0 || >=0.2.0-rc.1 <0.3.0-0 || >=0.2.1-0 <0.3.0-0 || >=0.2.2-0 <0.3.0-0",
+    "@deepseek-ai/dsh-tools": ">=0.1.5-rc.2 <0.2.0 || >=0.2.0-rc.1 <0.3.0-0 || >=0.2.1-0 <0.3.0-0 || >=0.2.2-0 <0.3.0-0"
   },
   "dependencies": {
     "@deepseek-ai/schemastery": "^3.18.2"

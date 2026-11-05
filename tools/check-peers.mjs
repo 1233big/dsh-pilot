@@ -132,7 +132,12 @@ for (const [peer, range] of peers) {
 		console.log(`ok   ${peer}@${version} matches "${range}"`)
 	} else {
 		failed += 1
-		console.log(`FAIL ${peer}@${version} does not match "${range}"  (dsh gate=${gate ? 'pass' : 'fail'}, pnpm=${plain ? 'pass' : 'fail'})`)
+		// npm's semver only accepts a prerelease when some comparator in the range
+		// names the same major.minor.patch, so every new 0.2.x prerelease needs its own
+		// || branch. Spell out the clause the reader has to add.
+		const core = version.split('-')[0]
+		const hint = `add ">=${core}-0 <${semver.major(version)}.${semver.minor(version) + 1}.0-0"`
+		console.log(`FAIL ${peer}@${version} does not match "${range}"  (dsh gate=${gate ? 'pass' : 'fail'}, pnpm=${plain ? 'pass' : 'fail'}) — ${hint}`)
 	}
 }
 
